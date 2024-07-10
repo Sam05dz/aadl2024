@@ -20,7 +20,7 @@
     document.head.appendChild(bootstrapCDN);
 
     const people = [
-        { name: 'persone 1 ', wilaya: '16', nin: '***********', nss: '***************', num: '************' },
+        { name: 'persone 1 ', wilaya: 'x', nin: '***********', nss: '***************', num: '************' },
        
         // Ajoutez d'autres personnes ici
     ];
