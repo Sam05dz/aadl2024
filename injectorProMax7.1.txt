@@ -2,7 +2,7 @@
 // @name         AADL3 Injector Pro
 // @namespace    https://aadl.com.dz/
 // @version      0.7.1
-// @description  Remplit automatiquement le formulaire avec des boutons pour chaque personne
+// @description  AutoAADL3 , Correction numéro de wilaya, captchaAuto, Checked CheckBox .
 // @author       Houssam 2024
 // @match        https://aadl3inscription2024.dz/*
 // @match        https://*.aadl3inscription2024.dz/*
