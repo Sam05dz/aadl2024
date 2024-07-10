@@ -9,7 +9,6 @@
 // @match        https://houham.netlify.app/aadl3/
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=aadl.com.dz
 // @grant        none
-
 // ==/UserScript==
 
 (function() {
@@ -53,10 +52,8 @@
             button.addEventListener('click', () => fillForm(person));
             buttonContainer.appendChild(button);
         });
-
         document.body.appendChild(buttonContainer);
     }
-
     function fillForm(person) {
         waitForElement('#A17', function(element) {
             element.value = person.wilaya;
@@ -89,24 +86,17 @@
             }, 100);
         }
     }
-
-
  var checkbox = document.getElementById('A91_1');
     if (checkbox) {
         checkbox.checked = true;
     }
-
-
     createButtons();
-
     function clickButton() {
         var button = document.getElementById('A55');
         if (button) {
             button.click();
         }
     }
-
-    // Attendre que le DOM soit complètement chargé avant de cliquer sur le bouton
     window.addEventListener('load', function() {
         clickButton();
     }, false);
