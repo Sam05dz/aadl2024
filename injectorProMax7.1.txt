@@ -23,6 +23,7 @@
         { name: 'personne 1', wilaya: 'x', nin: 'xxxxxxxxxxxxxxxxxx', nss: 'xxxxxxxxxxxx', num: 'xxxxxxxxxx' },
         { name: 'personne 2', wilaya: 'x', nin: 'xxxxxxxxxxxxxxxxxx', nss: 'xxxxxxxxxxxx', num: 'xxxxxxxxxx' }, 
         // Ajoutez d'autres personnes ici
+        // pour le numéro de wilaya dir sans zéro , exemple blida dir  '9' , alger '16' oran '30' ...etc
     ];
 
    function generateCaptcha(length) {
