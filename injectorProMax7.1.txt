@@ -20,8 +20,8 @@
     document.head.appendChild(bootstrapCDN);
 
     const people = [
-        { name: 'Amine Lefkir', wilaya: '17', nin: '100000581039590002', nss: '003959001162', num: '0551010776' },
-        { name: 'abdou boudiaf', wilaya: '6', nin: '109970117045910004', nss: '974591000339', num: '0551166544' }, // require      https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js
+        { name: 'personne 1', wilaya: 'x', nin: 'xxxxxxxxxxxxxxxxxx', nss: 'xxxxxxxxxxxx', num: 'xxxxxxxxxx' },
+        { name: 'personne 2', wilaya: 'x', nin: 'xxxxxxxxxxxxxxxxxx', nss: 'xxxxxxxxxxxx', num: 'xxxxxxxxxx' }, 
         // Ajoutez d'autres personnes ici
     ];
 
