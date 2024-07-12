@@ -21,7 +21,7 @@
     document.head.appendChild(bootstrapCDN);
 
     const people = [
-           //Yahia pro
+           
         { name: 'Person 01', wilaya: 'x', nin: 'xxxxxxxxxxxxxxx', nss: 'xxxxxxx', num: 'xxxxxxxx' },
      
     ];
@@ -52,16 +52,16 @@
             button.textContent = person.name;
             button.classList.add('btn', 'btn-primary', 'btn-block', 'mb-2');
 
-            // Vérifie si le bouton a déjà été cliqué
+           
             const buttonState = localStorage.getItem('buttonState_' + person.name);
             if (buttonState === 'clicked') {
-                button.classList.add('btn-success'); // Change de couleur si déjà cliqué
+                button.classList.add('btn-success');
             }
 
             button.addEventListener('click', () => {
                 fillForm(person);
-                button.classList.add('btn-success'); // Change de couleur après le clic
-                localStorage.setItem('buttonState_' + person.name, 'clicked'); // Enregistre l'état du bouton
+                button.classList.add('btn-success');
+                localStorage.setItem('buttonState_' + person.name, 'clicked');
             });
 
             buttonContainer.appendChild(button);
