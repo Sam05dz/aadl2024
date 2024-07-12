@@ -1,39 +1,41 @@
 // ==UserScript==
 // @name         AADL3 Injector Pro
 // @namespace    https://aadl.com.dz/
-// @version      0.7.1
-// @description  Correction du numéro de la wilaya
-// @author       Houssam 2024
+// @version      0.7.2
+// @description  AutoAADL3 , Correction numéro de wilaya, captchaAuto, Checked CheckBox .
+// @author       BLS SPAIN SALON HELP VISA 
 // @match        https://aadl3inscription2024.dz/*
 // @match        https://*.aadl3inscription2024.dz/*
 // @match        https://houham.netlify.app/aadl3/
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=aadl.com.dz
 // @grant        none
-
 // ==/UserScript==
 
 (function() {
     'use strict';
+
+    // Chargement du style Bootstrap
     const bootstrapCDN = document.createElement('link');
     bootstrapCDN.rel = 'stylesheet';
     bootstrapCDN.href = 'https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css';
     document.head.appendChild(bootstrapCDN);
 
     const people = [
-        { name: 'persone 1 ', wilaya: 'x', nin: '***********', nss: '***************', num: '************' },
-       
-        // Ajoutez d'autres personnes ici
+           //Yahia pro
+        { name: 'Person 01', wilaya: 'x', nin: 'xxxxxxxxxxxxxxx', nss: 'xxxxxxx', num: 'xxxxxxxx' },
+     
     ];
 
-   function generateCaptcha(length) {
-    let result = '';
-    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-    const charactersLength = characters.length;
-    for (let i = 0; i < length; i++) {
-        result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    function generateCaptcha(length) {
+        let result = '';
+        const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+        const charactersLength = characters.length;
+        for (let i = 0; i < length; i++) {
+            result += characters.charAt(Math.floor(Math.random() * charactersLength));
+        }
+        return result;
     }
-    return result;
-}
+
     function createButtons() {
         const buttonContainer = document.createElement('div');
         buttonContainer.style.position = 'fixed';
@@ -49,7 +51,19 @@
             const button = document.createElement('button');
             button.textContent = person.name;
             button.classList.add('btn', 'btn-primary', 'btn-block', 'mb-2');
-            button.addEventListener('click', () => fillForm(person));
+
+            // Vérifie si le bouton a déjà été cliqué
+            const buttonState = localStorage.getItem('buttonState_' + person.name);
+            if (buttonState === 'clicked') {
+                button.classList.add('btn-success'); // Change de couleur si déjà cliqué
+            }
+
+            button.addEventListener('click', () => {
+                fillForm(person);
+                button.classList.add('btn-success'); // Change de couleur après le clic
+                localStorage.setItem('buttonState_' + person.name, 'clicked'); // Enregistre l'état du bouton
+            });
+
             buttonContainer.appendChild(button);
         });
 
@@ -58,10 +72,10 @@
 
     function fillForm(person) {
         waitForElement('#A17', function(element) {
-        let wilayaValue = parseInt(person.wilaya, 10) + 1;
-        element.value = wilayaValue.toString();
-        element.dispatchEvent(new Event('change'));
-    });
+            let wilayaValue = parseInt(person.wilaya, 10) + 1;
+            element.value = wilayaValue.toString();
+            element.dispatchEvent(new Event('change'));
+        });
 
         waitForElement('#A22', function(element) {
             element.value = person.nin;
@@ -74,7 +88,8 @@
         waitForElement('#A13', function(element) {
             element.value = person.num;
         });
-         waitForElement('#A33', function(element) {
+
+        waitForElement('#A33', function(element) {
             element.value = generateCaptcha(6);
         });
     }
@@ -90,12 +105,23 @@
         }
     }
 
-   var checkbox = document.getElementById('A91_1');
+    createButtons();
+
+    function clickButton() {
+        var button = document.getElementById('A55');
+        if (button) {
+            button.click();
+        }
+    }
+
+    window.addEventListener('load', function() {
+        clickButton();
+    }, false);
+
+    var checkbox = document.getElementById('A91_1');
     if (checkbox) {
         checkbox.checked = true;
     }
-
-    createButtons();
 
     document.addEventListener('contextmenu', function(event) {
         event.stopPropagation();
@@ -112,4 +138,5 @@
     document.addEventListener('paste', function(event) {
         event.stopPropagation();
     }, true);
+
 })();
